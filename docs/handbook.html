@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONI — Cell Alpha-7 Operative Handbook</title>
+  <link rel="stylesheet" href="../assets/css/boot.css" />
+  <style>
+    #site-main { font-family: var(--font-body); }
+    .doc-wrapper { max-width: 860px; margin: 0 auto; }
+    .doc-masthead {
+      border: 1px solid var(--oni-teal);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      background: rgba(0,200,212,0.03);
+    }
+    .doc-masthead::before, .doc-masthead::after {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+      border-color: var(--oni-teal);
+      border-style: solid;
+    }
+    .doc-masthead::before { top:-1px; left:-1px; border-width: 2px 0 0 2px; }
+    .doc-masthead::after  { bottom:-1px; right:-1px; border-width: 0 2px 2px 0; }
+    .doc-heading {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      color: var(--oni-teal);
+      text-shadow: 0 0 15px rgba(0,200,212,0.5);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .doc-classification-banner {
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--oni-amber);
+      text-shadow: 0 0 10px var(--oni-amber);
+      padding: 0.4rem;
+      border: 1px solid var(--oni-amber-dim);
+      margin-bottom: 1rem;
+    }
+    .doc-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.3rem;
+      font-size: 0.7rem;
+      color: var(--oni-text-dim);
+      margin-top: 1rem;
+    }
+    .doc-meta-grid span { letter-spacing: 0.08em; }
+    .doc-meta-grid span strong { color: var(--oni-text); }
+
+    .toc {
+      border: 1px solid var(--oni-border);
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 2rem;
+      background: rgba(0,15,20,0.6);
+    }
+    .toc-title {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--oni-teal-dim);
+      margin-bottom: 0.8rem;
+    }
+    .toc ol { padding-left: 1.2rem; }
+    .toc li { margin: 0.4rem 0; font-size: 0.78rem; }
+    .toc a { color: var(--oni-text); text-decoration: none; transition: color 0.2s; }
+    .toc a:hover { color: var(--oni-teal); }
+
+    .doc-section { margin-bottom: 2.5rem; }
+    .doc-section-title {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--oni-teal);
+      border-bottom: 1px solid var(--oni-border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .doc-sub { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; color: var(--oni-text); margin: 1rem 0 0.4rem; font-family: var(--font-display); }
+    .doc-body { font-size: 0.82rem; line-height: 1.9; color: var(--oni-text); }
+    .doc-body p { margin-bottom: 0.8rem; }
+    .doc-body ul { padding-left: 1.5rem; margin-bottom: 0.8rem; }
+    .doc-body li { margin-bottom: 0.4rem; }
+    .doc-body strong { color: var(--oni-teal); }
+    .doc-body .redacted {
+      background: var(--oni-teal);
+      color: var(--oni-teal);
+      cursor: default;
+      user-select: none;
+      border-radius: 2px;
+    }
+    .doc-body .redacted:hover { background: var(--oni-teal-dim); color: transparent; }
+
+    .warning-box {
+      border: 1px solid var(--oni-amber);
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.78rem;
+      color: var(--oni-amber);
+      background: rgba(232,160,0,0.05);
+    }
+    .warning-box strong { color: var(--oni-amber); }
+
+    .rule-list { counter-reset: rule; list-style: none; padding-left: 0; }
+    .rule-list li { counter-increment: rule; padding: 0.5rem 0; border-bottom: 1px solid rgba(0,200,212,0.08); font-size: 0.82rem; color: var(--oni-text); }
+    .rule-list li::before { content: counter(rule, decimal-leading-zero) '.'; color: var(--oni-teal-dim); margin-right: 0.8rem; font-family: var(--font-mono); }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: var(--oni-teal-dim);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--oni-teal); }
+
+    .doc-footer-stamp {
+      border-top: 1px solid var(--oni-border);
+      margin-top: 3rem;
+      padding-top: 1.2rem;
+      font-size: 0.65rem;
+      color: var(--oni-text-dim);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  </style>
+</head>
+<body>
+<div id="site-scanline"></div>
+<div id="main-site" style="display:flex;">
+  <header id="site-header">
+    <div id="header-left">
+      <div id="header-logo">ONI</div>
+      <div id="header-tagline">
+        <span>OFFICE OF NAVAL INTELLIGENCE</span>
+        <span class="dim">// SECTION THREE // CELL ALPHA-7</span>
+      </div>
+    </div>
+    <div id="header-right">
+      <div class="status-dot active"></div>
+      <span class="status-text">SECURE CONNECTION</span>
+      <div id="clock"></div>
+    </div>
+  </header>
+
+  <nav id="site-nav">
+    <a href="../index.html" class="nav-link">▸ DASHBOARD</a>
+    <a href="../documents.html" class="nav-link active">▸ DOCUMENTS</a>
+    <a href="../personnel.html" class="nav-link">▸ PERSONNEL</a>
+    <a href="../operations.html" class="nav-link">▸ OPERATIONS</a>
+  </nav>
+
+  <main id="site-main">
+    <div class="doc-wrapper">
+      <a href="../documents.html" class="back-link">◂ RETURN TO DOCUMENT LIBRARY</a>
+
+      <div class="doc-masthead">
+        <div class="doc-classification-banner">⬛ TOP SECRET // ONI EYES ONLY // SECTION THREE ACCESS REQUIRED ⬛</div>
+        <div class="doc-heading">CELL ALPHA-7 OPERATIVE HANDBOOK</div>
+        <div style="text-align:center; font-size:0.7rem; color:var(--oni-text-dim); letter-spacing:0.15em;">
+          OFFICE OF NAVAL INTELLIGENCE — SECTION THREE
+        </div>
+        <div class="doc-meta-grid">
+          <span><strong>DOCUMENT REF:</strong> ONI-S3-HB-A7-003.1</span>
+          <span><strong>REVISION:</strong> 3.1</span>
+          <span><strong>CLASSIFICATION:</strong> TOP SECRET // EYES ONLY</span>
+          <span><strong>DISTRIBUTION:</strong> CELL ALPHA-7 OPERATIVES ONLY</span>
+          <span><strong>AUTHOR:</strong> [REDACTED]</span>
+          <span><strong>APPROVED BY:</strong> SECTION THREE COMMAND</span>
+          <span><strong>DATED:</strong> [REDACTED]</span>
+          <span><strong>SUPERSEDES:</strong> REV 3.0</span>
+        </div>
+      </div>
+
+      <div class="warning-box">
+        <strong>WARNING:</strong> This document contains classified information pertaining to the activities of ONI Section Three Cell Alpha-7. Unauthorized access, reproduction, or dissemination is a violation of the UNSC Security Act and NAVINT Regulation 12.9.1. Violators will be prosecuted to the fullest extent of UCMJ Article 55.
+      </div>
+
+      <div class="toc">
+        <div class="toc-title">// TABLE OF CONTENTS</div>
+        <ol>
+          <li><a href="#s1">Purpose & Scope</a></li>
+          <li><a href="#s2">Chain of Command</a></li>
+          <li><a href="#s3">Operative Conduct Standards</a></li>
+          <li><a href="#s4">Communication Protocols</a></li>
+          <li><a href="#s5">Cover Identity Requirements</a></li>
+          <li><a href="#s6">Operational Security (OPSEC)</a></li>
+          <li><a href="#s7">Rules of Engagement</a></li>
+          <li><a href="#s8">Asset Handling</a></li>
+          <li><a href="#s9">Emergency Procedures</a></li>
+          <li><a href="#s10">Reporting Requirements</a></li>
+        </ol>
+      </div>
+
+      <!-- SECTION 1 -->
+      <div class="doc-section" id="s1">
+        <div class="doc-section-title">01. PURPOSE & SCOPE</div>
+        <div class="doc-body">
+          <p>This handbook establishes the standard operating procedures, conduct expectations, and operational guidelines for all personnel assigned to <strong>UNSC Office of Naval Intelligence, Section Three, Cell Alpha-7</strong>. All operatives are required to read, understand, and comply with the contents of this document in full.</p>
+          <p>This handbook does not supersede any active Directive issued by Section Three Command. In cases of conflict, the most recent Directive takes precedence. This handbook is subject to revision at the discretion of Cell Command.</p>
+          <p>Questions regarding the interpretation of any section should be directed to your immediate superior or to the Cell Commander. Do not attempt to resolve ambiguities unilaterally in the field.</p>
+        </div>
+      </div>
+
+      <!-- SECTION 2 -->
+      <div class="doc-section" id="s2">
+        <div class="doc-section-title">02. CHAIN OF COMMAND</div>
+        <div class="doc-body">
+          <p>The chain of command for Cell Alpha-7 is as follows, in descending order of authority:</p>
+          <ul>
+            <li><strong>Section Three Command</strong> — Ultimate authority. Directives from Command are inviolable.</li>
+            <li><strong>Cell Commander</strong> — Designated by Section Three. Operational authority within the cell.</li>
+            <li><strong>Deputy Commander</strong> — Assumes command in the absence of the Cell Commander.</li>
+            <li><strong>Senior Field Operatives</strong> — Lead assigned field teams.</li>
+            <li><strong>Operatives & Support Personnel</strong> — Execute assigned tasks.</li>
+          </ul>
+          <p>No operative shall take unilateral action outside their assigned mandate without explicit authorization from their superior. All deviations must be reported within <strong>24 hours</strong> via secure channel.</p>
+        </div>
+      </div>
+
+      <!-- SECTION 3 -->
+      <div class="doc-section" id="s3">
+        <div class="doc-section-title">03. OPERATIVE CONDUCT STANDARDS</div>
+        <div class="doc-body">
+          <div class="doc-sub">3.1 GENERAL CONDUCT</div>
+          <p>All operatives represent the Office of Naval Intelligence and are expected to conduct themselves with discipline, professionalism, and discretion at all times — whether in the field, at cell facilities, or in personal capacity.</p>
+
+          <div class="doc-sub">3.2 PROHIBITED CONDUCT</div>
+          <ul class="rule-list">
+            <li>Disclosure of cell identity, membership, or activities to any unauthorized party.</li>
+            <li>Use of ONI resources for personal benefit or unauthorized purposes.</li>
+            <li>Contact with media, civilian intelligence entities, or foreign nationals outside of operational cover without written authorization.</li>
+            <li>Retention of classified materials outside of designated secure storage.</li>
+            <li>Alcohol or substance use within 8 hours of an operational assignment.</li>
+            <li>Accessing Section Three systems from unsecured networks.</li>
+          </ul>
+
+          <div class="doc-sub">3.3 MANDATORY REPORTING</div>
+          <p>Operatives are required to report the following immediately to their handler or Cell Commander:</p>
+          <ul>
+            <li>Any suspected surveillance or contact from hostile entities.</li>
+            <li>Compromise of cover identity or cell information.</li>
+            <li>Unauthorized contact from outside parties regarding ONI activities.</li>
+            <li>Personal circumstances that may affect operational reliability.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SECTION 4 -->
+      <div class="doc-section" id="s4">
+        <div class="doc-section-title">04. COMMUNICATION PROTOCOLS</div>
+        <div class="doc-body">
+          <p>All inter-cell communications must be conducted through <strong>approved encrypted channels only</strong>. Refer to the <em>Field Communications Guide</em> for cipher schedules and dead-drop protocols.</p>
+          <div class="warning-box">
+            <strong>CRITICAL:</strong> Any communication conducted on an unapproved channel — even for ostensibly routine matters — is a SERIOUS breach. All such breaches will be investigated and may result in reassignment or termination of operative status.
+          </div>
+          <p>Communications with Section Three Command are to be routed through your designated handler exclusively. Direct contact with Command above your handler requires prior authorization from the Cell Commander.</p>
+          <p>Emergency contact procedures are detailed in <strong>Section 9</strong> of this handbook.</p>
+        </div>
+      </div>
+
+      <!-- SECTION 5 -->
+      <div class="doc-section" id="s5">
+        <div class="doc-section-title">05. COVER IDENTITY REQUIREMENTS</div>
+        <div class="doc-body">
+          <p>Operatives assigned a cover identity are required to maintain that identity consistently, both in the field and in all non-secure interactions. Cover biographies, supporting documentation, and training are provided by the Cell Logistics operative (<strong>ECHO-7</strong>).</p>
+          <ul>
+            <li>Cover identities must not be discussed on secure cell channels unless operationally necessary.</li>
+            <li>Any challenge to a cover identity — however minor — must be reported immediately.</li>
+            <li>Operatives must not develop personal attachments within their cover that could compromise objectivity or mission integrity.</li>
+            <li>Cover identity materials are to be returned or destroyed upon assignment conclusion, per logistics instructions.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SECTION 6 -->
+      <div class="doc-section" id="s6">
+        <div class="doc-section-title">06. OPERATIONAL SECURITY (OPSEC)</div>
+        <div class="doc-body">
+          <p>Operatives are to assume that all environments are potentially hostile and that surveillance is always possible. The following OPSEC practices are mandatory:</p>
+          <ul>
+            <li>Never discuss operational matters in unsecured locations.</li>
+            <li>Conduct counter-surveillance checks before and after all meetings.</li>
+            <li>Compartmentalize information — know only what is required for your assignment.</li>
+            <li>All digital devices used in an operational capacity must be Section Three-issued or cleared by technical staff.</li>
+            <li>Destroy all temporary operational materials (notes, printed documents) using approved methods.</li>
+          </ul>
+          <p>Full OPSEC procedures are documented in the <em>Operational Security Manual</em>.</p>
+        </div>
+      </div>
+
+      <!-- SECTION 7 -->
+      <div class="doc-section" id="s7">
+        <div class="doc-section-title">07. RULES OF ENGAGEMENT</div>
+        <div class="doc-body">
+          <p>Operatives are authorized to use force only as specified in the current <em>Rules of Engagement (Amended)</em> directive. The baseline ROE for Cell Alpha-7 is as follows:</p>
+          <ul class="rule-list">
+            <li>Lethal force is authorized only in defense of self or another operative when no alternative is available.</li>
+            <li>Collateral casualties are to be avoided at all costs. Civilian harm triggers mandatory incident reporting.</li>
+            <li>Detainment of hostile actors requires Cell Commander approval unless operationally urgent.</li>
+            <li>Any action resulting in a fatality — regardless of circumstances — must be documented in a full incident report within 48 hours.</li>
+            <li>Proactive elimination operations require written authorization from Section Three Command. Verbal authorization is not sufficient.</li>
+          </ul>
+          <div class="warning-box"><strong>NOTE:</strong> Active Directives may expand or restrict the above ROE. Always confirm current standing orders before an operation.</div>
+        </div>
+      </div>
+
+      <!-- SECTION 8 -->
+      <div class="doc-section" id="s8">
+        <div class="doc-section-title">08. ASSET HANDLING</div>
+        <div class="doc-body">
+          <p>Assets are to be treated as valuable but inherently unreliable. The following standards apply to all asset relationships:</p>
+          <ul>
+            <li>Assets are to be compartmentalized — no asset should be aware of other assets unless operationally essential.</li>
+            <li>Asset welfare is a secondary consideration to operational security and mission success.</li>
+            <li>Promises made to assets must be approved by Cell Commander before being offered.</li>
+            <li>Asset compromise is to be reported immediately. In some circumstances, asset termination may be authorized per Directive <span class="redacted">7-ALPHA-29 SECTION 4.2</span>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SECTION 9 -->
+      <div class="doc-section" id="s9">
+        <div class="doc-section-title">09. EMERGENCY PROCEDURES</div>
+        <div class="doc-body">
+          <div class="doc-sub">9.1 COMPROMISE PROTOCOL</div>
+          <p>If an operative believes their cover or the cell has been compromised, they are to:</p>
+          <ul>
+            <li>Cease all operational activity immediately.</li>
+            <li>Activate the emergency signal per the Communications Guide.</li>
+            <li>Move to the designated safe house (coordinates held by handler only).</li>
+            <li>Await contact from Cell Commander or designated handler. Do not attempt independent exfiltration.</li>
+          </ul>
+
+          <div class="doc-sub">9.2 EXTRACTION</div>
+          <p>Emergency extraction is available 24/7 via the handler line. The extraction protocol is detailed in the <em>Field Communications Guide</em>. Authentication codes are issued individually and are to be memorized — never written down.</p>
+
+          <div class="doc-sub">9.3 CAPTURE PROTOCOL</div>
+          <p>In the event of capture by a hostile entity, operatives are to:</p>
+          <ul>
+            <li>Maintain cover identity for as long as operationally prudent.</li>
+            <li>Divulge no information beyond cover identity details.</li>
+            <li>Activate the emergency beacon if possible (device issued at briefing).</li>
+            <li>Be advised: Section Three does not negotiate for captured operatives. Extraction will be attempted by operational means only.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SECTION 10 -->
+      <div class="doc-section" id="s10">
+        <div class="doc-section-title">10. REPORTING REQUIREMENTS</div>
+        <div class="doc-body">
+          <p>The following reports are mandatory for all operatives:</p>
+          <ul>
+            <li><strong>Daily Sitrep</strong> — Submitted via secure channel each 0800 UTC during active operations.</li>
+            <li><strong>After-Action Report</strong> — Required within 72 hours of any completed operation. Template available in the Document Library.</li>
+            <li><strong>Incident Report</strong> — Required within 24 hours of any use of force, cover challenge, or security anomaly.</li>
+            <li><strong>Asset Contact Report</strong> — Following any meeting with a handled asset.</li>
+          </ul>
+          <p>Failure to submit required reports is a disciplinary matter and may result in suspension of operational status pending review.</p>
+        </div>
+      </div>
+
+      <div class="doc-footer-stamp">
+        <div>
+          DOCUMENT: ONI-S3-HB-A7-003.1<br>
+          CLASSIFICATION: TOP SECRET // ONI EYES ONLY<br>
+          UNSC OFFICE OF NAVAL INTELLIGENCE — SECTION THREE
+        </div>
+        <div style="text-align:right;">
+          REVISION 3.1<br>
+          DATED: [REDACTED]<br>
+          PAGE 1 OF 1 (DIGITAL EDITION)
+        </div>
+      </div>
+
+    </div><!-- /doc-wrapper -->
+  </main>
+
+  <footer id="site-footer">
+    <span>UNSC OFFICE OF NAVAL INTELLIGENCE — ALL DATA CLASSIFIED</span>
+    <span>UNAUTHORIZED ACCESS WILL BE PROSECUTED UNDER ARTICLE 55, UCMJ</span>
+  </footer>
+</div>
+<script src="../assets/js/boot.js"></script>
+<script>sessionStorage.setItem('oni_authenticated','1');</script>
+</body>
+</html>

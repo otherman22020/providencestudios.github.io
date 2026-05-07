@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONI — [DOCUMENT TITLE]</title>
+  <link rel="stylesheet" href="../assets/css/boot.css" />
+  <style>
+    #site-main { font-family: var(--font-body); }
+    .doc-wrapper { max-width: 860px; margin: 0 auto; }
+    .doc-masthead {
+      border: 1px solid var(--oni-teal);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      background: rgba(0,200,212,0.03);
+    }
+    .doc-masthead::before, .doc-masthead::after {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+      border-color: var(--oni-teal);
+      border-style: solid;
+    }
+    .doc-masthead::before { top:-1px; left:-1px; border-width: 2px 0 0 2px; }
+    .doc-masthead::after  { bottom:-1px; right:-1px; border-width: 0 2px 2px 0; }
+    .doc-heading {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      color: var(--oni-teal);
+      text-shadow: 0 0 15px rgba(0,200,212,0.5);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .doc-classification-banner {
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--oni-amber);
+      text-shadow: 0 0 10px var(--oni-amber);
+      padding: 0.4rem;
+      border: 1px solid var(--oni-amber-dim);
+      margin-bottom: 1rem;
+    }
+    .doc-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.3rem;
+      font-size: 0.7rem;
+      color: var(--oni-text-dim);
+      margin-top: 1rem;
+    }
+    .doc-meta-grid span strong { color: var(--oni-text); }
+    .toc {
+      border: 1px solid var(--oni-border);
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 2rem;
+      background: rgba(0,15,20,0.6);
+    }
+    .toc-title { font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 0.25em; color: var(--oni-teal-dim); margin-bottom: 0.8rem; }
+    .toc ol { padding-left: 1.2rem; }
+    .toc li { margin: 0.4rem 0; font-size: 0.78rem; }
+    .toc a { color: var(--oni-text); text-decoration: none; transition: color 0.2s; }
+    .toc a:hover { color: var(--oni-teal); }
+    .doc-section { margin-bottom: 2.5rem; }
+    .doc-section-title {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--oni-teal);
+      border-bottom: 1px solid var(--oni-border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .doc-sub { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; color: var(--oni-text); margin: 1rem 0 0.4rem; font-family: var(--font-display); }
+    .doc-body { font-size: 0.82rem; line-height: 1.9; color: var(--oni-text); }
+    .doc-body p { margin-bottom: 0.8rem; }
+    .doc-body ul { padding-left: 1.5rem; margin-bottom: 0.8rem; }
+    .doc-body li { margin-bottom: 0.4rem; }
+    .doc-body strong { color: var(--oni-teal); }
+    .warning-box {
+      border: 1px solid var(--oni-amber);
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.78rem;
+      color: var(--oni-amber);
+      background: rgba(232,160,0,0.05);
+    }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: var(--oni-teal-dim);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--oni-teal); }
+    .doc-footer-stamp {
+      border-top: 1px solid var(--oni-border);
+      margin-top: 3rem;
+      padding-top: 1.2rem;
+      font-size: 0.65rem;
+      color: var(--oni-text-dim);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  </style>
+</head>
+<body>
+<div id="site-scanline"></div>
+<div id="main-site" style="display:flex;">
+  <header id="site-header">
+    <div id="header-left">
+      <div id="header-logo">ONI</div>
+      <div id="header-tagline">
+        <span>OFFICE OF NAVAL INTELLIGENCE</span>
+        <span class="dim">// SECTION THREE // CELL ALPHA-7</span>
+      </div>
+    </div>
+    <div id="header-right">
+      <div class="status-dot active"></div>
+      <span class="status-text">SECURE CONNECTION</span>
+      <div id="clock"></div>
+    </div>
+  </header>
+
+  <nav id="site-nav">
+    <a href="../index.html" class="nav-link">▸ DASHBOARD</a>
+    <a href="../documents.html" class="nav-link active">▸ DOCUMENTS</a>
+    <a href="../personnel.html" class="nav-link">▸ PERSONNEL</a>
+    <a href="../operations.html" class="nav-link">▸ OPERATIONS</a>
+  </nav>
+
+  <main id="site-main">
+    <div class="doc-wrapper">
+      <a href="../documents.html" class="back-link">◂ RETURN TO DOCUMENT LIBRARY</a>
+
+      <!-- ══ DOCUMENT MASTHEAD ══ -->
+      <!-- Edit the classification, title, and metadata below -->
+      <div class="doc-masthead">
+        <div class="doc-classification-banner">⬛ [CLASSIFICATION LEVEL] // [HANDLING CAVEAT] ⬛</div>
+        <div class="doc-heading">[DOCUMENT TITLE]</div>
+        <div style="text-align:center; font-size:0.7rem; color:var(--oni-text-dim); letter-spacing:0.15em;">
+          OFFICE OF NAVAL INTELLIGENCE — SECTION THREE
+        </div>
+        <div class="doc-meta-grid">
+          <span><strong>DOCUMENT REF:</strong> ONI-S3-[REF]</span>
+          <span><strong>REVISION:</strong> 1.0</span>
+          <span><strong>CLASSIFICATION:</strong> [LEVEL]</span>
+          <span><strong>DISTRIBUTION:</strong> CELL ALPHA-7 ONLY</span>
+          <span><strong>AUTHOR:</strong> [REDACTED]</span>
+          <span><strong>APPROVED BY:</strong> [REDACTED]</span>
+          <span><strong>DATED:</strong> [DATE]</span>
+          <span><strong>SUPERSEDES:</strong> N/A</span>
+        </div>
+      </div>
+
+      <!-- ══ OPTIONAL WARNING BOX ══ -->
+      <div class="warning-box">
+        <strong>WARNING:</strong> This document contains classified information. Unauthorized access or dissemination is a violation of UNSC Security Act provisions and NAVINT Regulation 12.9.1.
+      </div>
+
+      <!-- ══ TABLE OF CONTENTS (optional) ══ -->
+      <div class="toc">
+        <div class="toc-title">// TABLE OF CONTENTS</div>
+        <ol>
+          <li><a href="#s1">Section One Title</a></li>
+          <li><a href="#s2">Section Two Title</a></li>
+          <!-- Add more sections as needed -->
+        </ol>
+      </div>
+
+      <!-- ══ SECTION 1 ══ -->
+      <div class="doc-section" id="s1">
+        <div class="doc-section-title">01. SECTION ONE TITLE</div>
+        <div class="doc-body">
+          <p>Write your section content here. You can use standard HTML elements.</p>
+
+          <div class="doc-sub">1.1 SUB-SECTION</div>
+          <p>Sub-section content goes here.</p>
+          <ul>
+            <li>Bullet point one</li>
+            <li>Bullet point two</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ══ SECTION 2 ══ -->
+      <div class="doc-section" id="s2">
+        <div class="doc-section-title">02. SECTION TWO TITLE</div>
+        <div class="doc-body">
+          <p>Section two content here.</p>
+        </div>
+      </div>
+
+      <!-- ══ ADD MORE SECTIONS BY COPYING THE BLOCK ABOVE ══ -->
+
+      <!-- ══ DOCUMENT FOOTER ══ -->
+      <div class="doc-footer-stamp">
+        <div>
+          DOCUMENT: ONI-S3-[REF]<br>
+          CLASSIFICATION: [LEVEL]<br>
+          UNSC OFFICE OF NAVAL INTELLIGENCE — SECTION THREE
+        </div>
+        <div style="text-align:right;">
+          REVISION 1.0<br>
+          DATED: [DATE]<br>
+          CELL ALPHA-7
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="site-footer">
+    <span>UNSC OFFICE OF NAVAL INTELLIGENCE — ALL DATA CLASSIFIED</span>
+    <span>UNAUTHORIZED ACCESS WILL BE PROSECUTED UNDER ARTICLE 55, UCMJ</span>
+  </footer>
+</div>
+<script src="../assets/js/boot.js"></script>
+<script>sessionStorage.setItem('oni_authenticated','1');</script>
+</body>
+</html>

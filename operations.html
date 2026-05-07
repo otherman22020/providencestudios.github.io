@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONI — Operations</title>
+  <link rel="stylesheet" href="assets/css/boot.css" />
+</head>
+<body>
+<div id="site-scanline"></div>
+<div id="main-site" style="display:flex;">
+  <header id="site-header">
+    <div id="header-left">
+      <div id="header-logo">ONI</div>
+      <div id="header-tagline">
+        <span>OFFICE OF NAVAL INTELLIGENCE</span>
+        <span class="dim">// SECTION THREE // CELL ALPHA-7</span>
+      </div>
+    </div>
+    <div id="header-right">
+      <div class="status-dot active"></div>
+      <span class="status-text">SECURE CONNECTION</span>
+      <div id="clock"></div>
+    </div>
+  </header>
+
+  <nav id="site-nav">
+    <a href="index.html" class="nav-link">▸ DASHBOARD</a>
+    <a href="documents.html" class="nav-link">▸ DOCUMENTS</a>
+    <a href="personnel.html" class="nav-link">▸ PERSONNEL</a>
+    <a href="operations.html" class="nav-link active">▸ OPERATIONS</a>
+  </nav>
+
+  <main id="site-main">
+    <div class="page-header">
+      <div class="page-title">// OPERATIONS BOARD</div>
+      <div class="page-subtitle">CELL ALPHA-7 — CURRENT & HISTORICAL OPERATIONS — CLASSIFICATION: TOP SECRET</div>
+    </div>
+
+    <div class="section-label">ACTIVE OPERATIONS</div>
+
+    <div class="ops-item active">
+      <div class="ops-name">OPERATION: [REDACTED] — CODENAME: IRON SHROUD</div>
+      <div class="ops-detail">
+        <strong style="color:var(--oni-teal);">OBJECTIVE:</strong> [CLASSIFIED] — Refer to Directive 7-ALPHA-29 for authorization.<br>
+        <strong style="color:var(--oni-teal);">THEATRE:</strong> [REDACTED]<br>
+        <strong style="color:var(--oni-teal);">ASSIGNED OPERATIVES:</strong> SHEPHERD, PILGRIM, WRAITH<br>
+        <strong style="color:var(--oni-teal);">STATUS:</strong> <span style="color:var(--oni-green);">ACTIVE — PHASE 2 OF 3</span><br>
+        <strong style="color:var(--oni-teal);">LAST UPDATE:</strong> [REDACTED]
+      </div>
+    </div>
+
+    <div class="ops-item active">
+      <div class="ops-name">OPERATION: [REDACTED] — CODENAME: PALE MIRROR</div>
+      <div class="ops-detail">
+        <strong style="color:var(--oni-teal);">OBJECTIVE:</strong> Intelligence gathering — monitoring of [REDACTED] communications channels.<br>
+        <strong style="color:var(--oni-teal);">THEATRE:</strong> [REDACTED]<br>
+        <strong style="color:var(--oni-teal);">ASSIGNED OPERATIVES:</strong> ORACLE, ECHO-7<br>
+        <strong style="color:var(--oni-teal);">STATUS:</strong> <span style="color:var(--oni-green);">ACTIVE — ONGOING SURVEILLANCE</span><br>
+        <strong style="color:var(--oni-teal);">LAST UPDATE:</strong> [REDACTED]
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:1.5rem;">PENDING OPERATIONS</div>
+
+    <div class="ops-item pending">
+      <div class="ops-name">OPERATION: [REDACTED] — CODENAME: COLD MERIDIAN</div>
+      <div class="ops-detail">
+        <strong style="color:var(--oni-teal);">OBJECTIVE:</strong> [AWAITING AUTHORIZATION FROM SECTION THREE COMMAND]<br>
+        <strong style="color:var(--oni-teal);">THEATRE:</strong> [TBD]<br>
+        <strong style="color:var(--oni-teal);">STATUS:</strong> <span style="color:var(--oni-amber);">PENDING — AWAITING DIRECTIVE</span>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:1.5rem;">CLOSED OPERATIONS</div>
+
+    <div class="ops-item closed">
+      <div class="ops-name">OPERATION: [REDACTED] — CODENAME: EMBER TIDE</div>
+      <div class="ops-detail">
+        <strong style="color:var(--oni-teal);">OBJECTIVE:</strong> [REDACTED]<br>
+        <strong style="color:var(--oni-teal);">STATUS:</strong> <span style="color:var(--oni-text-dim);">CLOSED — OBJECTIVE ACHIEVED</span><br>
+        <strong style="color:var(--oni-teal);">AAR:</strong> <a href="docs/aar.html" style="color:var(--oni-teal-dim);">See After-Action Report</a><br>
+        <strong style="color:var(--oni-teal);">NOTES:</strong> 1 operative KIA (CASSIAN). Operation deemed successful.
+      </div>
+    </div>
+
+    <div class="ops-item closed">
+      <div class="ops-name">OPERATION: [REDACTED] — CODENAME: SILENT DUSK</div>
+      <div class="ops-detail">
+        <strong style="color:var(--oni-teal);">OBJECTIVE:</strong> [REDACTED]<br>
+        <strong style="color:var(--oni-teal);">STATUS:</strong> <span style="color:var(--oni-text-dim);">CLOSED — OBJECTIVE PARTIALLY ACHIEVED</span><br>
+        <strong style="color:var(--oni-teal);">AAR:</strong> [REDACTED]
+      </div>
+    </div>
+
+  </main>
+
+  <footer id="site-footer">
+    <span>UNSC OFFICE OF NAVAL INTELLIGENCE — ALL DATA CLASSIFIED</span>
+    <span>UNAUTHORIZED ACCESS WILL BE PROSECUTED UNDER ARTICLE 55, UCMJ</span>
+  </footer>
+</div>
+<script src="assets/js/boot.js"></script>
+<script>sessionStorage.setItem('oni_authenticated','1');</script>
+</body>
+</html>

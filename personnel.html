@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONI — Personnel</title>
+  <link rel="stylesheet" href="assets/css/boot.css" />
+</head>
+<body>
+<div id="site-scanline"></div>
+<div id="main-site" style="display:flex;">
+  <header id="site-header">
+    <div id="header-left">
+      <div id="header-logo">ONI</div>
+      <div id="header-tagline">
+        <span>OFFICE OF NAVAL INTELLIGENCE</span>
+        <span class="dim">// SECTION THREE // CELL ALPHA-7</span>
+      </div>
+    </div>
+    <div id="header-right">
+      <div class="status-dot active"></div>
+      <span class="status-text">SECURE CONNECTION</span>
+      <div id="clock"></div>
+    </div>
+  </header>
+
+  <nav id="site-nav">
+    <a href="index.html" class="nav-link">▸ DASHBOARD</a>
+    <a href="documents.html" class="nav-link">▸ DOCUMENTS</a>
+    <a href="personnel.html" class="nav-link active">▸ PERSONNEL</a>
+    <a href="operations.html" class="nav-link">▸ OPERATIONS</a>
+  </nav>
+
+  <main id="site-main">
+    <div class="page-header">
+      <div class="page-title">// PERSONNEL ROSTER</div>
+      <div class="page-subtitle">CELL ALPHA-7 — ACTIVE & RESERVE OPERATIVES — CLASSIFICATION: TOP SECRET</div>
+    </div>
+
+    <div style="margin-bottom:1rem; font-size:0.72rem; color:var(--oni-amber);">
+      ⚠ REAL IDENTITIES REDACTED. COVER DESIGNATIONS ONLY. ACTUAL NAMES STORED IN SECTION THREE MAINFRAME.
+    </div>
+
+    <div class="section-label">COMMAND STAFF</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>DESIGNATION</th>
+          <th>RANK / ROLE</th>
+          <th>SPECIALISATION</th>
+          <th>STATUS</th>
+          <th>HANDLER</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--oni-teal); letter-spacing:0.1em;">[REDACTED]</td>
+          <td>CELL COMMANDER</td>
+          <td>Strategic Operations</td>
+          <td><span class="badge active">ACTIVE</span></td>
+          <td>SECTION THREE CMD</td>
+        </tr>
+        <tr>
+          <td style="color:var(--oni-teal); letter-spacing:0.1em;">[REDACTED]</td>
+          <td>DEPUTY COMMANDER</td>
+          <td>Intelligence Analysis</td>
+          <td><span class="badge active">ACTIVE</span></td>
+          <td>[REDACTED]</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-label" style="margin-top:1.5rem;">OPERATIVES</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>CALLSIGN</th>
+          <th>ROLE</th>
+          <th>SPECIALISATION</th>
+          <th>STATUS</th>
+          <th>CURRENT ASSIGNMENT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--oni-teal);">SHEPHERD</td>
+          <td>Field Operative</td>
+          <td>HUMINT / Asset Recruitment</td>
+          <td><span class="badge active">ACTIVE</span></td>
+          <td>[CLASSIFIED]</td>
+        </tr>
+        <tr>
+          <td style="color:var(--oni-teal);">PILGRIM</td>
+          <td>Field Operative</td>
+          <td>SIGINT / Technical</td>
+          <td><span class="badge active">ACTIVE</span></td>
+          <td>[CLASSIFIED]</td>
+        </tr>
+        <tr>
+          <td style="color:var(--oni-teal);">ORACLE</td>
+          <td>Analyst</td>
+          <td>Threat Assessment</td>
+          <td><span class="badge standby">STANDBY</span></td>
+          <td>CELL HQ</td>
+        </tr>
+        <tr>
+          <td style="color:var(--oni-teal);">WRAITH</td>
+          <td>Field Operative</td>
+          <td>Covert Action / Elimination</td>
+          <td><span class="badge classified">CLASSIFIED</span></td>
+          <td>[CLASSIFIED]</td>
+        </tr>
+        <tr>
+          <td style="color:var(--oni-teal);">ECHO-7</td>
+          <td>Support Operative</td>
+          <td>Logistics / Cover IDs</td>
+          <td><span class="badge active">ACTIVE</span></td>
+          <td>CELL HQ</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-label" style="margin-top:1.5rem;">INACTIVE / FORMER</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>CALLSIGN</th>
+          <th>ROLE</th>
+          <th>SPECIALISATION</th>
+          <th>STATUS</th>
+          <th>NOTES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--oni-text-dim);">CASSIAN</td>
+          <td>Field Operative</td>
+          <td>HUMINT</td>
+          <td><span class="badge kia">KIA</span></td>
+          <td>[REDACTED] — See AAR-0041</td>
+        </tr>
+        <tr>
+          <td style="color:var(--oni-text-dim);">AXIOM</td>
+          <td>Analyst</td>
+          <td>Cryptanalysis</td>
+          <td><span class="badge classified">TRANSFERRED</span></td>
+          <td>Reassigned — Section Two</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:2rem; padding:1rem; border:1px solid var(--oni-border); font-size:0.7rem; color:var(--oni-text-dim); line-height:1.8;">
+      <strong style="color:var(--oni-amber);">ADMINISTRATIVE NOTE:</strong> To add or update personnel entries, edit the Personnel Records in the Document Library. Contact your cell commander or SECTION THREE administrative liaison. All changes are logged and verified.
+    </div>
+  </main>
+
+  <footer id="site-footer">
+    <span>UNSC OFFICE OF NAVAL INTELLIGENCE — ALL DATA CLASSIFIED</span>
+    <span>UNAUTHORIZED ACCESS WILL BE PROSECUTED UNDER ARTICLE 55, UCMJ</span>
+  </footer>
+</div>
+<script src="assets/js/boot.js"></script>
+<script>sessionStorage.setItem('oni_authenticated','1');</script>
+</body>
+</html>

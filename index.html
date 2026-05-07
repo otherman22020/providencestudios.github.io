@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONI RESTRICTED — SYSTEM BOOT</title>
+  <link rel="stylesheet" href="assets/css/boot.css" />
+</head>
+<body>
+  <div id="scanline"></div>
+  <div id="boot-screen">
+    <div id="console-wrap">
+      <div id="oni-logo">
+        <pre id="ascii-logo">
+ ██████╗ ███╗   ██╗██╗
+██╔═══██╗████╗  ██║██║
+██║   ██║██╔██╗ ██║██║
+██║   ██║██║╚██╗██║██║
+╚██████╔╝██║ ╚████║██║
+ ╚═════╝ ╚═╝  ╚═══╝╚═╝
+        </pre>
+        <div id="oni-subtitle">OFFICE OF NAVAL INTELLIGENCE</div>
+        <div id="oni-sub2">SECTION THREE — CELL ALPHA-7 — CLASSIFIED</div>
+      </div>
+
+      <div id="console-output"></div>
+      <div id="console-cursor-line">
+        <span class="prompt">ONI://SYS&gt;&nbsp;</span><span id="cursor-blink">█</span>
+      </div>
+
+      <div id="auth-block" style="display:none;">
+        <div class="auth-label">AUTHORIZATION REQUIRED</div>
+        <div class="auth-input-wrap">
+          <span class="prompt">PASSCODE:&nbsp;</span>
+          <input type="password" id="auth-input" autocomplete="off" maxlength="32" />
+        </div>
+        <div id="auth-error" style="display:none;">⚠ INVALID CREDENTIALS — ATTEMPT LOGGED</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="main-site" style="display:none;">
+    <div id="site-scanline"></div>
+    <header id="site-header">
+      <div id="header-left">
+        <div id="header-logo">ONI</div>
+        <div id="header-tagline">
+          <span>OFFICE OF NAVAL INTELLIGENCE</span>
+          <span class="dim">// SECTION THREE // CELL ALPHA-7</span>
+        </div>
+      </div>
+      <div id="header-right">
+        <div class="status-dot active"></div>
+        <span class="status-text">SECURE CONNECTION</span>
+        <div id="clock"></div>
+      </div>
+    </header>
+
+    <nav id="site-nav">
+      <a href="index.html" class="nav-link active" data-section="dashboard">▸ DASHBOARD</a>
+      <a href="documents.html" class="nav-link" data-section="docs">▸ DOCUMENTS</a>
+      <a href="personnel.html" class="nav-link" data-section="personnel">▸ PERSONNEL</a>
+      <a href="operations.html" class="nav-link" data-section="ops">▸ OPERATIONS</a>
+    </nav>
+
+    <main id="site-main">
+      <section class="dash-grid">
+        <div class="dash-card wide">
+          <div class="card-header">// CELL STATUS</div>
+          <div class="card-body">
+            <div class="status-row"><span class="label">OPERATIONAL STATUS</span><span class="value green">ACTIVE</span></div>
+            <div class="status-row"><span class="label">SECURITY LEVEL</span><span class="value amber">CLASSIFIED</span></div>
+            <div class="status-row"><span class="label">ACTIVE PERSONNEL</span><span class="value">CLASSIFIED</span></div>
+            <div class="status-row"><span class="label">CURRENT THEATRE</span><span class="value">REDACTED</span></div>
+            <div class="status-row"><span class="label">LAST SYNC</span><span class="value" id="last-sync"></span></div>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <div class="card-header">// ALERT LOG</div>
+          <div class="card-body">
+            <div class="log-entry warn">[WARN] Uplink packet loss detected — sector 7</div>
+            <div class="log-entry info">[INFO] Document index synchronized</div>
+            <div class="log-entry info">[INFO] Personnel roster updated — 2 entries</div>
+            <div class="log-entry ok">[OK] Encryption handshake verified</div>
+            <div class="log-entry info">[INFO] New directive received — see Ops board</div>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <div class="card-header">// QUICK ACCESS</div>
+          <div class="card-body quick-links">
+            <a href="documents.html" class="quick-btn">📁 DOCUMENT LIBRARY</a>
+            <a href="documents.html#handbook" class="quick-btn">📘 CELL HANDBOOK</a>
+            <a href="operations.html" class="quick-btn">🎯 ACTIVE OPERATIONS</a>
+            <a href="personnel.html" class="quick-btn">👤 PERSONNEL FILES</a>
+          </div>
+        </div>
+
+        <div class="dash-card wide">
+          <div class="card-header">// DIRECTIVE FEED</div>
+          <div class="card-body">
+            <p class="directive-text">All operatives are reminded that communications outside of approved channels constitute a breach of <strong>NAVINT-REG 7.4.1</strong>. Report anomalous contact immediately to your handler.</p>
+            <p class="directive-text dim">— Section Three Command, [DATE REDACTED]</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="site-footer">
+      <span>UNSC OFFICE OF NAVAL INTELLIGENCE — ALL DATA CLASSIFIED</span>
+      <span>UNAUTHORIZED ACCESS WILL BE PROSECUTED UNDER ARTICLE 55, UCMJ</span>
+    </footer>
+  </div>
+
+  <script src="assets/js/boot.js"></script>
+</body>
+</html>
