@@ -3,11 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ONI RESTRICTED — SYSTEM BOOT</title>
+  <title>CELL LOCKSTEP — SYSTEM BOOT</title>
   <link rel="stylesheet" href="assets/css/boot.css" />
+  <style>
+    /* ── ORG CHART ─────────────────────────────── */
+    .org-chart { display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .org-node {
+      border: 1px solid var(--oni-border);
+      padding: 0.45rem 1rem;
+      text-align: center;
+      min-width: 180px;
+      position: relative;
+      background: rgba(0,15,20,0.8);
+    }
+    .org-node.command { border-color: var(--oni-teal); background: rgba(0,200,212,0.05); }
+    .org-node.s1      { border-color: #4a90e2; background: rgba(74,144,226,0.06); }
+    .org-node.s3      { border-color: var(--oni-amber); background: rgba(232,160,0,0.05); }
+    .org-node.orion   { border-color: #c84040; background: rgba(200,64,64,0.06); }
+    .org-title { font-family: var(--font-display); font-size: 0.55rem; letter-spacing: 0.18em; color: var(--oni-text-dim); }
+    .org-node.command .org-title { color: var(--oni-teal-dim); }
+    .org-node.s1      .org-title { color: #4a90e2; }
+    .org-node.s3      .org-title { color: var(--oni-amber-dim); }
+    .org-node.orion   .org-title { color: #c84040; }
+    .org-name { font-family: var(--font-mono); font-size: 0.7rem; color: var(--oni-text); margin-top: 0.1rem; }
+
+    .org-connector {
+      width: 1px; height: 14px;
+      background: var(--oni-teal-dim);
+      margin: 0 auto;
+    }
+
+    .org-branches {
+      display: flex;
+      gap: 0.6rem;
+      position: relative;
+      margin-top: 0;
+      padding-top: 0;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .org-branches::before {
+      content: '';
+      position: absolute;
+      top: 0; left: calc(50% - 120px); right: calc(50% - 120px);
+      height: 1px;
+      background: var(--oni-border);
+    }
+    .org-branch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .org-branch-line {
+      width: 1px; height: 14px;
+      background: var(--oni-border);
+    }
+  </style>
 </head>
 <body>
   <div id="scanline"></div>
+
+  <!-- ══ BOOT SCREEN ══ -->
   <div id="boot-screen">
     <div id="console-wrap">
       <div id="oni-logo">
@@ -20,25 +76,26 @@
  ╚═════╝ ╚═╝  ╚═══╝╚═╝
         </pre>
         <div id="oni-subtitle">OFFICE OF NAVAL INTELLIGENCE</div>
-        <div id="oni-sub2">SECTION THREE — CELL ALPHA-7 — CLASSIFIED</div>
+        <div id="oni-sub2">CELL LOCKSTEP // TOP SECRET // EYES ONLY</div>
       </div>
 
       <div id="console-output"></div>
       <div id="console-cursor-line">
-        <span class="prompt">ONI://SYS&gt;&nbsp;</span><span id="cursor-blink">█</span>
+        <span class="prompt">LOCKSTEP://SYS&gt;&nbsp;</span><span id="cursor-blink">█</span>
       </div>
 
       <div id="auth-block" style="display:none;">
-        <div class="auth-label">AUTHORIZATION REQUIRED</div>
+        <div class="auth-label">AUTHORIZATION REQUIRED — CELL LOCKSTEP CLEARANCE</div>
         <div class="auth-input-wrap">
           <span class="prompt">PASSCODE:&nbsp;</span>
           <input type="password" id="auth-input" autocomplete="off" maxlength="32" />
         </div>
-        <div id="auth-error" style="display:none;">⚠ INVALID CREDENTIALS — ATTEMPT LOGGED</div>
+        <div id="auth-error" style="display:none;">⚠ INVALID CREDENTIALS — ATTEMPT LOGGED AND REPORTED</div>
       </div>
     </div>
   </div>
 
+  <!-- ══ MAIN SITE ══ -->
   <div id="main-site" style="display:none;">
     <div id="site-scanline"></div>
     <header id="site-header">
@@ -46,7 +103,7 @@
         <div id="header-logo">ONI</div>
         <div id="header-tagline">
           <span>OFFICE OF NAVAL INTELLIGENCE</span>
-          <span class="dim">// SECTION THREE // CELL ALPHA-7</span>
+          <span class="dim">// CELL LOCKSTEP // TOP SECRET // EYES ONLY</span>
         </div>
       </div>
       <div id="header-right">
@@ -57,58 +114,113 @@
     </header>
 
     <nav id="site-nav">
-      <a href="index.html" class="nav-link active" data-section="dashboard">▸ DASHBOARD</a>
-      <a href="documents.html" class="nav-link" data-section="docs">▸ DOCUMENTS</a>
-      <a href="personnel.html" class="nav-link" data-section="personnel">▸ PERSONNEL</a>
-      <a href="operations.html" class="nav-link" data-section="ops">▸ OPERATIONS</a>
+      <a href="index.html"      class="nav-link active">▸ DASHBOARD</a>
+      <a href="documents.html"  class="nav-link">▸ DOCUMENTS</a>
+      <a href="personnel.html"  class="nav-link">▸ PERSONNEL</a>
+      <a href="operations.html" class="nav-link">▸ OPERATIONS</a>
     </nav>
 
     <main id="site-main">
       <section class="dash-grid">
-        <div class="dash-card wide">
+
+        <!-- STATUS -->
+        <div class="dash-card">
           <div class="card-header">// CELL STATUS</div>
           <div class="card-body">
+            <div class="status-row"><span class="label">CELL DESIGNATION</span><span class="value" style="color:var(--oni-teal);letter-spacing:0.15em;text-shadow:0 0 10px var(--oni-teal);">LOCKSTEP</span></div>
             <div class="status-row"><span class="label">OPERATIONAL STATUS</span><span class="value green">ACTIVE</span></div>
-            <div class="status-row"><span class="label">SECURITY LEVEL</span><span class="value amber">CLASSIFIED</span></div>
-            <div class="status-row"><span class="label">ACTIVE PERSONNEL</span><span class="value">CLASSIFIED</span></div>
-            <div class="status-row"><span class="label">CURRENT THEATRE</span><span class="value">REDACTED</span></div>
+            <div class="status-row"><span class="label">SECURITY LEVEL</span><span class="value amber">TOP SECRET // EYES ONLY</span></div>
+            <div class="status-row"><span class="label">SECTION ONE UNIT</span><span class="value green">ACTIVE</span></div>
+            <div class="status-row"><span class="label">SECTION THREE UNIT</span><span class="value green">ACTIVE</span></div>
+            <div class="status-row"><span class="label">ORION PROJECT TEAM</span><span class="value amber">DEPLOYED</span></div>
             <div class="status-row"><span class="label">LAST SYNC</span><span class="value" id="last-sync"></span></div>
           </div>
         </div>
 
+        <!-- COMMAND STRUCTURE -->
+        <div class="dash-card">
+          <div class="card-header">// COMMAND STRUCTURE</div>
+          <div class="card-body">
+            <div class="org-chart">
+              <div class="org-node command">
+                <div class="org-title">CELL COMMANDER</div>
+                <div class="org-name">[REDACTED]</div>
+              </div>
+              <div class="org-connector"></div>
+              <div class="org-node command">
+                <div class="org-title">DEPUTY CELL COMMANDER</div>
+                <div class="org-name">[REDACTED]</div>
+              </div>
+              <div class="org-connector" style="background:var(--oni-border);"></div>
+              <div class="org-branches">
+                <div class="org-branch">
+                  <div class="org-branch-line"></div>
+                  <div class="org-node s1">
+                    <div class="org-title">SECTION ONE LEAD</div>
+                    <div class="org-name">[REDACTED]</div>
+                  </div>
+                </div>
+                <div class="org-branch">
+                  <div class="org-branch-line"></div>
+                  <div class="org-node s3">
+                    <div class="org-title">SECTION THREE LEAD</div>
+                    <div class="org-name">[REDACTED]</div>
+                  </div>
+                </div>
+                <div class="org-branch">
+                  <div class="org-branch-line"></div>
+                  <div class="org-node orion">
+                    <div class="org-title">ORION TEAM LEAD</div>
+                    <div class="org-name">[REDACTED]</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ALERT LOG -->
         <div class="dash-card">
           <div class="card-header">// ALERT LOG</div>
           <div class="card-body">
-            <div class="log-entry warn">[WARN] Uplink packet loss detected — sector 7</div>
+            <div class="log-entry warn">[WARN] Uplink packet loss — relay node 1 (REACH-7)</div>
+            <div class="log-entry ok">[OK]   All three partitions mounted and verified</div>
             <div class="log-entry info">[INFO] Document index synchronized</div>
-            <div class="log-entry info">[INFO] Personnel roster updated — 2 entries</div>
-            <div class="log-entry ok">[OK] Encryption handshake verified</div>
-            <div class="log-entry info">[INFO] New directive received — see Ops board</div>
+            <div class="log-entry ok">[OK]   Encryption handshake verified — all channels</div>
+            <div class="log-entry info">[INFO] Orion Team status beacon received</div>
+            <div class="log-entry info">[INFO] Section One intel uplink — nominal</div>
+            <div class="log-entry info">[INFO] New directive pending — see Operations board</div>
           </div>
         </div>
 
+        <!-- QUICK ACCESS -->
         <div class="dash-card">
           <div class="card-header">// QUICK ACCESS</div>
           <div class="card-body quick-links">
-            <a href="documents.html" class="quick-btn">📁 DOCUMENT LIBRARY</a>
-            <a href="documents.html#handbook" class="quick-btn">📘 CELL HANDBOOK</a>
-            <a href="operations.html" class="quick-btn">🎯 ACTIVE OPERATIONS</a>
-            <a href="personnel.html" class="quick-btn">👤 PERSONNEL FILES</a>
+            <a href="documents.html"          class="quick-btn">📁 DOCUMENT LIBRARY</a>
+            <a href="documents.html#handbook" class="quick-btn">📘 CELL LOCKSTEP HANDBOOK</a>
+            <a href="personnel.html#s1"       class="quick-btn" style="border-color:#4a90e2;color:#4a90e2;">◈ SECTION ONE ROSTER</a>
+            <a href="personnel.html#s3"       class="quick-btn" style="border-color:var(--oni-amber);color:var(--oni-amber);">◈ SECTION THREE ROSTER</a>
+            <a href="personnel.html#orion"    class="quick-btn" style="border-color:#c84040;color:#c84040;">◈ ORION PROJECT ROSTER</a>
+            <a href="operations.html"         class="quick-btn">🎯 OPERATIONS BOARD</a>
           </div>
         </div>
 
+        <!-- DIRECTIVE FEED -->
         <div class="dash-card wide">
-          <div class="card-header">// DIRECTIVE FEED</div>
+          <div class="card-header">// STANDING DIRECTIVE — CELL LOCKSTEP</div>
           <div class="card-body">
-            <p class="directive-text">All operatives are reminded that communications outside of approved channels constitute a breach of <strong>NAVINT-REG 7.4.1</strong>. Report anomalous contact immediately to your handler.</p>
-            <p class="directive-text dim">— Section Three Command, [DATE REDACTED]</p>
+            <p class="directive-text">All LOCKSTEP personnel are reminded that the existence, composition, and activities of this cell — including the attachment of <strong>ORION PROJECT</strong> assets — are classified <strong>TOP SECRET // EYES ONLY</strong>. Disclosure to any party not cleared at this level, including other ONI personnel, is strictly prohibited and constitutes a violation of <strong>NAVINT-REG 7.4.1</strong> and the UNSC Security Act.</p>
+            <p class="directive-text">Section One and Section Three units are to maintain operational separation at all times except where the Cell Commander expressly authorizes joint activity. Orion Project team members operate under their own chain of command for tactical decisions; all strategic direction flows through the Cell Commander.</p>
+            <p class="directive-text dim">— Standing Directive // Cell LOCKSTEP // Issued by Cell Commander // [DATE REDACTED]</p>
           </div>
         </div>
+
       </section>
     </main>
 
     <footer id="site-footer">
-      <span>UNSC OFFICE OF NAVAL INTELLIGENCE — ALL DATA CLASSIFIED</span>
+      <span>UNSC OFFICE OF NAVAL INTELLIGENCE — CELL LOCKSTEP — ALL DATA CLASSIFIED</span>
       <span>UNAUTHORIZED ACCESS WILL BE PROSECUTED UNDER ARTICLE 55, UCMJ</span>
     </footer>
   </div>

@@ -8,7 +8,7 @@
 
   // ── CONFIG ──────────────────────────────────
   // Set your access passcode here (or leave blank to skip auth)
-  const PASSCODE = 'ONI-ALPHA';
+  const PASSCODE = 'LOCKSTEP';
   const SKIP_BOOT = sessionStorage.getItem('oni_authenticated');
 
   const output   = document.getElementById('console-output');
@@ -22,7 +22,7 @@
   const bootLines = [
     { text: '═══════════════════════════════════════════════════════', cls: 'dim', delay: 0 },
     { text: 'UNSC OFFICE OF NAVAL INTELLIGENCE — SECURE TERMINAL', cls: 'head', delay: 60 },
-    { text: 'SECTION THREE // CLASSIFIED // EYES ONLY', cls: 'head', delay: 60 },
+    { text: 'OPERATION LOCKSTEP // TOP SECRET // EYES ONLY', cls: 'head', delay: 60 },
     { text: '═══════════════════════════════════════════════════════', cls: 'dim', delay: 60 },
     { text: '', delay: 120 },
     { text: 'Initializing secure boot sequence...', delay: 80 },
@@ -45,12 +45,16 @@
     { text: '  RELAY NODE 3 [ARGENT-MOON] ........ OK', cls: 'ok', delay: 60 },
     { text: '  Routing via NODE 2 — latency: 140ms', cls: 'dim', delay: 40 },
     { text: '', delay: 80 },
-    { text: 'Verifying ONI Section Three credentials...', delay: 80 },
+    { text: 'Verifying LOCKSTEP cell credentials...', delay: 80 },
     { text: '  RSA-8192 CERTIFICATE .............. VALID', cls: 'ok', delay: 50 },
     { text: '  QUANTUM SIGNATURE ................. VALID', cls: 'ok', delay: 50 },
     { text: '  RETINAL HASH (STORED) ............. MATCH', cls: 'ok', delay: 50 },
+    { text: '  ORION CLEARANCE FLAG .............. CONFIRMED', cls: 'ok', delay: 50 },
     { text: '', delay: 80 },
-    { text: 'Loading CELL ALPHA-7 data store...', delay: 80 },
+    { text: 'Loading CELL LOCKSTEP data store...', delay: 80 },
+    { text: '  Section One partition ............. MOUNTED', cls: 'ok', delay: 40 },
+    { text: '  Section Three partition ........... MOUNTED', cls: 'ok', delay: 40 },
+    { text: '  Orion Project partition ........... MOUNTED', cls: 'ok', delay: 40 },
     { text: '  Document index .................... INDEXED', cls: 'ok', delay: 40 },
     { text: '  Personnel roster .................. LOADED', cls: 'ok', delay: 40 },
     { text: '  Operations board .................. LOADED', cls: 'ok', delay: 40 },
@@ -60,7 +64,7 @@
     { text: '⚠  ALL ACTIONS LOGGED AND ATTRIBUTED TO USER ⚠', cls: 'warn', delay: 60 },
     { text: '', delay: 80 },
     { text: '═══════════════════════════════════════════════════════', cls: 'dim', delay: 60 },
-    { text: 'SYSTEM READY', cls: 'bright', delay: 100 },
+    { text: 'SYSTEM READY — WELCOME TO CELL LOCKSTEP', cls: 'bright', delay: 100 },
     { text: '═══════════════════════════════════════════════════════', cls: 'dim', delay: 60 },
     { text: '', delay: 100 },
   ];

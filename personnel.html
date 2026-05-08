@@ -3,18 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ONI — Personnel</title>
+  <title>CELL LOCKSTEP — Personnel</title>
   <link rel="stylesheet" href="assets/css/boot.css" />
+  <style>
+    .unit-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0 0.8rem;
+      padding: 0.6rem 1rem;
+      border-left: 3px solid;
+      background: rgba(0,15,20,0.6);
+    }
+    .unit-header.s1  { border-color: #4a90e2; }
+    .unit-header.s3  { border-color: var(--oni-amber); }
+    .unit-header.orion { border-color: #c84040; }
+
+    .unit-badge {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      padding: 0.25rem 0.7rem;
+      border: 1px solid;
+    }
+    .unit-badge.s1    { color: #4a90e2;          border-color: #4a90e2; }
+    .unit-badge.s3    { color: var(--oni-amber);  border-color: var(--oni-amber); }
+    .unit-badge.orion { color: #c84040;           border-color: #c84040; }
+
+    .unit-title {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+    }
+    .unit-title.s1    { color: #4a90e2; }
+    .unit-title.s3    { color: var(--oni-amber); }
+    .unit-title.orion { color: #c84040; }
+
+    .unit-desc { font-size: 0.68rem; color: var(--oni-text-dim); margin-left: auto; letter-spacing: 0.05em; }
+
+    /* Orion section warning */
+    .orion-warning {
+      border: 1px solid #c84040;
+      background: rgba(200,64,64,0.05);
+      padding: 0.7rem 1rem;
+      font-size: 0.72rem;
+      color: #c84040;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+    .orion-warning strong { color: #ff5555; }
+
+    /* role colour overrides in table */
+    td.s1-name   { color: #4a90e2; letter-spacing: 0.1em; }
+    td.s3-name   { color: var(--oni-amber); letter-spacing: 0.1em; }
+    td.orion-name{ color: #c84040; letter-spacing: 0.1em; }
+    td.cmd-name  { color: var(--oni-teal); letter-spacing: 0.1em; }
+  </style>
 </head>
 <body>
 <div id="site-scanline"></div>
 <div id="main-site" style="display:flex;">
+
   <header id="site-header">
     <div id="header-left">
       <div id="header-logo">ONI</div>
       <div id="header-tagline">
         <span>OFFICE OF NAVAL INTELLIGENCE</span>
-        <span class="dim">// SECTION THREE // CELL ALPHA-7</span>
+        <span class="dim">// CELL LOCKSTEP // TOP SECRET // EYES ONLY</span>
       </div>
     </div>
     <div id="header-right">
@@ -25,56 +81,63 @@
   </header>
 
   <nav id="site-nav">
-    <a href="index.html" class="nav-link">▸ DASHBOARD</a>
-    <a href="documents.html" class="nav-link">▸ DOCUMENTS</a>
-    <a href="personnel.html" class="nav-link active">▸ PERSONNEL</a>
+    <a href="index.html"      class="nav-link">▸ DASHBOARD</a>
+    <a href="documents.html"  class="nav-link">▸ DOCUMENTS</a>
+    <a href="personnel.html"  class="nav-link active">▸ PERSONNEL</a>
     <a href="operations.html" class="nav-link">▸ OPERATIONS</a>
   </nav>
 
   <main id="site-main">
     <div class="page-header">
-      <div class="page-title">// PERSONNEL ROSTER</div>
-      <div class="page-subtitle">CELL ALPHA-7 — ACTIVE & RESERVE OPERATIVES — CLASSIFICATION: TOP SECRET</div>
+      <div class="page-title">// PERSONNEL ROSTER — CELL LOCKSTEP</div>
+      <div class="page-subtitle">FULL CELL ROSTER — CLASSIFICATION: TOP SECRET // EYES ONLY — DISTRIBUTION: CELL LOCKSTEP ONLY</div>
     </div>
 
-    <div style="margin-bottom:1rem; font-size:0.72rem; color:var(--oni-amber);">
-      ⚠ REAL IDENTITIES REDACTED. COVER DESIGNATIONS ONLY. ACTUAL NAMES STORED IN SECTION THREE MAINFRAME.
+    <div style="font-size:0.72rem; color:var(--oni-amber); margin-bottom:1.2rem; padding:0.6rem 1rem; border:1px solid var(--oni-amber-dim); background:rgba(232,160,0,0.04);">
+      ⚠ REAL IDENTITIES REDACTED. CALLSIGNS AND DESIGNATIONS ONLY. PERSONNEL FILES HELD BY ONI SECTION COMMAND. THIS ROSTER IS FOR INTERNAL COORDINATION ONLY.
     </div>
 
-    <div class="section-label">COMMAND STAFF</div>
+    <!-- ══ CELL COMMAND ══ -->
+    <div class="section-label">CELL COMMAND</div>
     <table class="data-table">
       <thead>
         <tr>
           <th>DESIGNATION</th>
-          <th>RANK / ROLE</th>
-          <th>SPECIALISATION</th>
+          <th>POSITION</th>
+          <th>AUTHORITY SCOPE</th>
           <th>STATUS</th>
-          <th>HANDLER</th>
+          <th>NOTES</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td style="color:var(--oni-teal); letter-spacing:0.1em;">[REDACTED]</td>
-          <td>CELL COMMANDER</td>
-          <td>Strategic Operations</td>
+          <td class="cmd-name">[REDACTED]</td>
+          <td>Cell Commander</td>
+          <td>Full Cell — All Units</td>
           <td><span class="badge active">ACTIVE</span></td>
-          <td>SECTION THREE CMD</td>
+          <td>Reports direct to ONI Command</td>
         </tr>
         <tr>
-          <td style="color:var(--oni-teal); letter-spacing:0.1em;">[REDACTED]</td>
-          <td>DEPUTY COMMANDER</td>
-          <td>Intelligence Analysis</td>
+          <td class="cmd-name">[REDACTED]</td>
+          <td>Deputy Cell Commander</td>
+          <td>Full Cell — Acts in Commander's absence</td>
           <td><span class="badge active">ACTIVE</span></td>
-          <td>[REDACTED]</td>
+          <td>Liaison between all three units</td>
         </tr>
       </tbody>
     </table>
 
-    <div class="section-label" style="margin-top:1.5rem;">OPERATIVES</div>
+    <!-- ══ SECTION ONE ══ -->
+    <div class="unit-header s1" id="s1">
+      <span class="unit-badge s1">SECTION ONE</span>
+      <span class="unit-title s1">SECTION ONE UNIT</span>
+      <span class="unit-desc">PERSONNEL — ADMINISTRATION — LOGISTICS</span>
+    </div>
+
     <table class="data-table">
       <thead>
         <tr>
-          <th>CALLSIGN</th>
+          <th>CALLSIGN / DESIGNATION</th>
           <th>ROLE</th>
           <th>SPECIALISATION</th>
           <th>STATUS</th>
@@ -83,79 +146,164 @@
       </thead>
       <tbody>
         <tr>
-          <td style="color:var(--oni-teal);">SHEPHERD</td>
-          <td>Field Operative</td>
-          <td>HUMINT / Asset Recruitment</td>
+          <td class="s1-name">[REDACTED]</td>
+          <td>Section One Unit Lead</td>
+          <td>Personnel & Administration</td>
           <td><span class="badge active">ACTIVE</span></td>
-          <td>[CLASSIFIED]</td>
+          <td>Cell HQ</td>
         </tr>
         <tr>
-          <td style="color:var(--oni-teal);">PILGRIM</td>
-          <td>Field Operative</td>
-          <td>SIGINT / Technical</td>
-          <td><span class="badge active">ACTIVE</span></td>
-          <td>[CLASSIFIED]</td>
+          <td class="s1-name">[PLACEHOLDER]</td>
+          <td>Section One Agent</td>
+          <td>—</td>
+          <td><span class="badge classified">UNASSIGNED</span></td>
+          <td>—</td>
         </tr>
         <tr>
-          <td style="color:var(--oni-teal);">ORACLE</td>
-          <td>Analyst</td>
-          <td>Threat Assessment</td>
-          <td><span class="badge standby">STANDBY</span></td>
-          <td>CELL HQ</td>
-        </tr>
-        <tr>
-          <td style="color:var(--oni-teal);">WRAITH</td>
-          <td>Field Operative</td>
-          <td>Covert Action / Elimination</td>
-          <td><span class="badge classified">CLASSIFIED</span></td>
-          <td>[CLASSIFIED]</td>
-        </tr>
-        <tr>
-          <td style="color:var(--oni-teal);">ECHO-7</td>
-          <td>Support Operative</td>
-          <td>Logistics / Cover IDs</td>
-          <td><span class="badge active">ACTIVE</span></td>
-          <td>CELL HQ</td>
+          <td class="s1-name">[PLACEHOLDER]</td>
+          <td>Section One Agent</td>
+          <td>—</td>
+          <td><span class="badge classified">UNASSIGNED</span></td>
+          <td>—</td>
         </tr>
       </tbody>
     </table>
+    <div style="font-size:0.65rem; color:var(--oni-text-dim); margin: 0.4rem 0 0 0.5rem;">
+      ✎ To add Section One agents, edit this table and replace [PLACEHOLDER] rows with operative details.
+    </div>
 
-    <div class="section-label" style="margin-top:1.5rem;">INACTIVE / FORMER</div>
+    <!-- ══ SECTION THREE ══ -->
+    <div class="unit-header s3" id="s3">
+      <span class="unit-badge s3">SECTION THREE</span>
+      <span class="unit-title s3">SECTION THREE UNIT</span>
+      <span class="unit-desc">COVERT OPERATIONS — INTELLIGENCE — BLACK OPS</span>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>CALLSIGN / DESIGNATION</th>
+          <th>ROLE</th>
+          <th>SPECIALISATION</th>
+          <th>STATUS</th>
+          <th>CURRENT ASSIGNMENT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="s3-name">[REDACTED]</td>
+          <td>Section Three Unit Lead</td>
+          <td>Covert Operations</td>
+          <td><span class="badge active">ACTIVE</span></td>
+          <td>Cell HQ</td>
+        </tr>
+        <tr>
+          <td class="s3-name">[PLACEHOLDER]</td>
+          <td>Section Three Agent</td>
+          <td>—</td>
+          <td><span class="badge classified">UNASSIGNED</span></td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="s3-name">[PLACEHOLDER]</td>
+          <td>Section Three Agent</td>
+          <td>—</td>
+          <td><span class="badge classified">UNASSIGNED</span></td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="font-size:0.65rem; color:var(--oni-text-dim); margin: 0.4rem 0 0 0.5rem;">
+      ✎ To add Section Three agents, edit this table and replace [PLACEHOLDER] rows with operative details.
+    </div>
+
+    <!-- ══ ORION PROJECT ══ -->
+    <div class="unit-header orion" id="orion">
+      <span class="unit-badge orion">ORION PROJECT</span>
+      <span class="unit-title orion">ORION PROJECT SPARTAN TEAM</span>
+      <span class="unit-desc">TOP SECRET // EYES ONLY</span>
+    </div>
+
+    <div class="orion-warning">
+      <strong>⚠ CLASSIFICATION NOTICE:</strong> ORION PROJECT personnel records are classified <strong>TOP SECRET // EYES ONLY</strong>. Access is restricted to Cell Commander, Deputy Cell Commander, and Orion Team members only. Augmentation status, physiological data, and mission history are held separately by ONI Medical and are not reproduced here.
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>SPARTAN DESIGNATION</th>
+          <th>ROLE</th>
+          <th>SPECIALISATION</th>
+          <th>STATUS</th>
+          <th>CURRENT ASSIGNMENT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="orion-name">[REDACTED]</td>
+          <td>Orion Team Lead</td>
+          <td>Combat Operations / Team Command</td>
+          <td><span class="badge active">ACTIVE</span></td>
+          <td>[CLASSIFIED]</td>
+        </tr>
+        <tr>
+          <td class="orion-name">[PLACEHOLDER]</td>
+          <td>Orion Team Member</td>
+          <td>—</td>
+          <td><span class="badge classified">UNASSIGNED</span></td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="orion-name">[PLACEHOLDER]</td>
+          <td>Orion Team Member</td>
+          <td>—</td>
+          <td><span class="badge classified">UNASSIGNED</span></td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="orion-name">[PLACEHOLDER]</td>
+          <td>Orion Team Member</td>
+          <td>—</td>
+          <td><span class="badge classified">UNASSIGNED</span></td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="font-size:0.65rem; color:var(--oni-text-dim); margin: 0.4rem 0 0 0.5rem;">
+      ✎ To add Orion Project team members, edit this table and replace [PLACEHOLDER] rows. Keep augmentation details off this page.
+    </div>
+
+    <!-- ══ INACTIVE ══ -->
+    <div class="section-label" style="margin-top:2rem;">INACTIVE / FORMER PERSONNEL</div>
     <table class="data-table">
       <thead>
         <tr>
           <th>CALLSIGN</th>
+          <th>UNIT</th>
           <th>ROLE</th>
-          <th>SPECIALISATION</th>
           <th>STATUS</th>
           <th>NOTES</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td style="color:var(--oni-text-dim);">CASSIAN</td>
-          <td>Field Operative</td>
-          <td>HUMINT</td>
-          <td><span class="badge kia">KIA</span></td>
-          <td>[REDACTED] — See AAR-0041</td>
-        </tr>
-        <tr>
-          <td style="color:var(--oni-text-dim);">AXIOM</td>
-          <td>Analyst</td>
-          <td>Cryptanalysis</td>
-          <td><span class="badge classified">TRANSFERRED</span></td>
-          <td>Reassigned — Section Two</td>
+          <td style="color:var(--oni-text-dim);">[—]</td>
+          <td>—</td>
+          <td>—</td>
+          <td><span class="badge classified">NO RECORD</span></td>
+          <td>No inactive personnel on file</td>
         </tr>
       </tbody>
     </table>
 
     <div style="margin-top:2rem; padding:1rem; border:1px solid var(--oni-border); font-size:0.7rem; color:var(--oni-text-dim); line-height:1.8;">
-      <strong style="color:var(--oni-amber);">ADMINISTRATIVE NOTE:</strong> To add or update personnel entries, edit the Personnel Records in the Document Library. Contact your cell commander or SECTION THREE administrative liaison. All changes are logged and verified.
+      <strong style="color:var(--oni-teal);">ADMIN NOTE:</strong> To populate this roster, open <code style="color:var(--oni-teal);">personnel.html</code> and replace the <code>[PLACEHOLDER]</code> and <code>[REDACTED]</code> entries with operative callsigns, roles, specialisations, and statuses. Add or remove rows as needed. The table structure is identical across all three unit sections. Badge classes available: <code>active</code> / <code>standby</code> / <code>kia</code> / <code>classified</code>.
     </div>
+
   </main>
 
   <footer id="site-footer">
-    <span>UNSC OFFICE OF NAVAL INTELLIGENCE — ALL DATA CLASSIFIED</span>
+    <span>UNSC OFFICE OF NAVAL INTELLIGENCE — CELL LOCKSTEP — ALL DATA CLASSIFIED</span>
     <span>UNAUTHORIZED ACCESS WILL BE PROSECUTED UNDER ARTICLE 55, UCMJ</span>
   </footer>
 </div>
